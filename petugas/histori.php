@@ -5,7 +5,7 @@ $id=$_SESSION['id_petugas'];
 
   <?php
         include "koneksi.php";
-       $his=mysqli_query($conn, "select p.* from pembayaran p join petugas t on t.id_petugas=p.id_petugas join siswa s on s.NISN=p.NISN  where p.id_petugas=$id order by id_pembayaran desc");
+       $his=mysqli_query($conn, "select p.*,s.*, t.nama_petugas from pembayaran p join petugas t on t.id_petugas=p.id_petugas join siswa s on s.NISN=p.NISN  order by id_pembayaran desc");
        $row = mysqli_num_rows($his);
       // var_dump($row);
        if($row==0){
@@ -21,7 +21,7 @@ $id=$_SESSION['id_petugas'];
     <table class="table table-hover table-striped">
         <thead>
         <tr>
-        <th> No </th>
+                            <th> No </th>
                         
                             <th> NISN </th>                            
                             <th> Tanggal Bayar </th>
